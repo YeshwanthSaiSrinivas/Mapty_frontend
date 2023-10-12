@@ -1,0 +1,336 @@
+import React from 'react';
+import '../css/admin.css';
+import { useState, useEffect } from 'react';
+import styles from '../css/admin.module.css'
+function AdminPortal() {
+
+    
+    const searchanevent = document.getElementById("searchanevent");
+    const deleteevent = document.getElementById("deleteevent");
+    const searchauser = document.getElementById("searchauser");
+    const deleteuser = document.getElementById("deleteuser");
+    const eventstats = document.getElementById("eventstats");
+    //let cards = document.getElementsByClassName("card");
+    const deleteUser = document.getElementById("deleteUser");
+    const userNameDelete = document.getElementById("userdeteleted");
+    const searchUser = document.getElementById("searchUser");
+    const searchuserName = document.getElementById("searchUsername");
+    const delEventBtn = document.getElementById("delEventBtn");
+    const eventNameDelete = document.getElementById("eventname");
+    const userName = document.getElementById("userdeleted");
+    const addanadmin = document.getElementById("addanadmin");
+    const adminName = document.getElementById("adminName");
+    const addAdminBtn = document.getElementById("addAdminBtn");
+    const forms0 = document.getElementById("forms0");
+    const forms1 = document.getElementById("forms1");
+    const details = document.getElementById("details");
+    const back = document.getElementById("back");
+    
+    const [condition, setCondition] = useState('1');
+    const [cards, setCards] = useState([])
+    const [Hobbies, setHobbies] = useState([])
+    const [table, setTable] = useState('')
+
+    const update = async () => {
+        try {
+          const info = await displayusers();
+          for (var i = 0; i < info.data.users.length; i++) {
+            const Name = info.data.users[i].username;
+            const Email = info.data.users[i].email;
+            const status = info.data.users[i].status;
+            for (let j = 0; j< 10; j++) {
+                setHobbies(prev => {
+                    return [info.data.users[i].hobbies[j] ? info.data.users[i].hobbies[j] : '', ...prev]
+                })
+            }
+            
+      
+            console.log(info.data.users[i].Hobbies);
+            setTable((prev) => {
+                return (
+                    `<tr>
+                        <th scope="row">${i + 1}</th>
+                        <td> ${Name} </td>
+                        <td> ${Email} </td>
+                        <td> ${Hobbies.map((elem) => {
+                            return elem + ' '
+                        })} </td>
+                        <td> ${status} </td>
+                    </tr>` + prev
+                )
+            });
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      
+      update();
+
+
+    const displayusers = async () => {
+        try {
+            const string = "https://mapty-server.onrender.com/api/user/allUsers";
+            const res = await fetch(string, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const information = await res.json();
+            console.log(information);
+            return information;
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const hideAlert = () => {
+        const el = document.querySelector(".alerts");
+        console.log(el);
+        if (el) el.parentElement.removeChild(el);
+    };
+
+    const showAlert = (type, msg, time = 5) => {
+        hideAlert();
+        const markup = `<div className="alerts alert--${type}">${msg}</div>`;
+        document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
+        window.setTimeout(hideAlert, time * 1000);
+    };
+
+
+
+    const addAdminHandler = () => {
+         setCondition('5')
+    }
+
+    const searchUserHandler = () => {
+        console.log(condition);
+        setCondition('3')
+    }
+
+    const deleteUserHandler = () => {
+        console.log(condition);
+        setCondition('4')
+    }
+   
+    const activateUserHandler = () => {
+        setCondition('1')
+    }
+
+    const deleteEventHandler = () => {
+        setCondition('2')
+    }
+  
+    // deleteUser.addEventListener("click", async () => {
+    //     const userName = userNameDelete.value;
+    //     const string = `https://mapty-server.onrender.com/api/user/deleteUser/${userName}`;
+    //     const res = await fetch(string, {
+    //         method: "DELETE",
+    //     });
+    //     const info = await res.json();
+    //     if (info.status === "success") {
+    //         showAlert("success", "User Deleted successfully");
+    //     } else {
+    //         showAlert("error", "User not Found");
+    //     }
+    // });
+
+    // back.addEventListener("click", () => {
+    //     forms0.style.display = "flex";
+    //     forms1.style.display = "none";
+    // });
+
+    // searchUser.addEventListener("click", async () => {
+    //     forms0.style.display = "none";
+    //     forms1.style.display = "flex";
+    //     const userName = searchuserName.value;
+    //     console.log(userName);
+    //     const string = `https://mapty-server.onrender.com/api/user/getUser/${userName}`;
+    //     const res = await fetch(string, {
+    //         method: "GET",
+    //     });
+    //     const info = await res.json();
+    //     if (info.status === "success") {
+    //         showAlert("success", "User Fetched successfully");
+    //     } else {
+    //         showAlert("error", "User not Found");
+    //     }
+    //     console.log(info);
+    //     let userusername = info.data.user.username;
+    //     let useremail = info.data.user.email;
+    //     let userhobbies = info.data.user.hobbies;
+    //     let usercreatetime = info.data.user.passwordCreatedAt;
+    //     let status = info.data.user.status;
+    //     usercreatetime = usercreatetime.substring(0, 10);
+
+    //     details.innerHTML = `Username: ${userusername} <br><br> Email: ${useremail} <br><br> Hobbies: ${userhobbies} <br><br> Account created at: ${usercreatetime} <br><br> Status: ${status}`;
+    // });
+
+    // delEventBtn.addEventListener("click", async () => {
+    //     const eventName = eventNameDelete.value;
+    //     const string = `https://mapty-server.onrender.com/api/event/deleteEvent/${eventName}`;
+    //     const res = await fetch(string, {
+    //         method: "DELETE",
+    //     });
+    //     const info = await res.json();
+    //     if (info.status === "success") {
+    //         showAlert("success", "Event Deleted successfully");
+    //     } else {
+    //         showAlert("error", "Event not Found");
+    //     }
+    // });
+
+    // addAdminBtn.addEventListener("click", async () => {
+    //     const userName = adminName.value;
+    //     const string = `https://mapty-server.onrender.com/api/user/add-admin/${userName}`;
+    //     const res = await fetch(string, {
+    //         method: "GET",
+    //     });
+    //     const info = await res.json();
+    //     if (info.status === "success") {
+    //         showAlert("success", "Admin added successfully");
+    //     } else {
+    //         showAlert("error", "Failed to add admin");
+    //     }
+    //     console.log(info);
+    // });
+    console.log(condition)
+    return (
+        <div className={styles.mainbox}>
+            <div className={styles.subbox1}>
+
+                <button className={styles.buttons} onClick={activateUserHandler}>Active Users</button>
+                <button className={styles.buttons} onClick={deleteEventHandler}>Delete event</button>
+                <button className={styles.buttons} onClick={searchUserHandler}>Search a user</button>
+                <button className={styles.buttons} onClick={deleteUserHandler}>Delete user</button>
+                <button className={styles.buttons} onClick={addAdminHandler}>Add an admin</button>
+
+            </div>
+            <div className={styles.subbox2}>
+                {
+                   
+                  condition==1 ? 
+                  <div className={styles.card} id="card1">
+                    <p className={styles.heading}>List of all active users</p>
+                    <div className={styles.div_table}>
+
+                        <table className="table main_table">
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Hobbies</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+
+                              {table}
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+                : null
+                }
+                
+   
+                {
+                  condition==2 ?
+                  <div className={styles.card}id="card2">
+                  <p className={styles.heading}style={{ paddingTop: '30px' }}>Delete event</p>
+                  <p className={styles.texts}>
+                      Give the details of an event to delete the event that you have searched for. Feel free to search via location if that information is available to you.
+                  </p>
+                  <form action="#" className={styles.form}>
+                      <input
+                          className={styles.details}
+                          type="text"
+                          name="EventName"
+                          id="eventname"
+                          placeholder="Delete via event name"
+                      />
+                      <button type="submit" className={styles.submit} id="delEventBtn">Search</button>
+
+                  </form>
+              </div> : null
+                }
+                {
+                   condition==3 ?
+                   <div className={styles.card} id="card3">
+                   <p className={styles.heading}>Search a user</p>
+                   <p className={styles.texts}>
+                       Provide username of any user to get details of that user. These details could be used to flag that user for potential account deletion.
+                   </p>
+                   <form action="#" className={styles.form} id="forms0">
+                       <input
+                           className={styles.details}
+                           type="text"
+                           name="EventLocation"
+                           id="searchUsername"
+                           placeholder="Search a user via username"
+                       />
+                       <button type="submit" className={styles.submit} id="searchUser">Search</button>
+                   </form>
+                   <div id="forms1" className={styles.form} style={{ display: 'none' }}>
+                       <div id="details" style={{ fontSize: 'larger', textAlign: 'justify', marginLeft: '50px' }}>
+
+                       </div>
+                       <button className={styles.submit} id="back">Back</button>
+                   </div>
+               </div> : null
+                }
+                
+                {
+                   condition==4 ?
+                   <>
+                  
+                   <div className={styles.card} id="card4">
+                   <p className={styles.heading}>Delete user</p>
+                   <p className={styles.texts}>
+                       Give the username of the user you want to delete. Please verify that you are following the guidelines before deleting a user to avoid legal troubles.
+                   </p>
+                   <form action="#" className={styles.form}>
+                       <input
+                           className={styles.details}
+                           type="text"
+                           name="EventName"
+                           id="userdeteleted"
+                           placeholder="Enter a username"
+                       />
+                       <button type="submit" className={styles.submit} id="deleteUser">Delete</button>
+
+                   </form>
+               </div></> : null
+                }
+
+                {
+                   condition==5 ?
+                     
+                   <div className={styles.card} id="card5">
+                   <p className={styles.heading}>Add an admin</p>
+                   <p className={styles.texts} >
+                       Add an exsting user as an admin. Only admins get access to the admin protal. No normal user can access this page. provide an username to make that account an admin.
+                   </p>
+                   <form action="#" className={styles.form}>
+                       <input
+                           className={styles.details}
+                           type="text"
+                           name="EventName"
+                           id="adminName"
+                           placeholder="Enter a username" />
+                       <button type="submit" className={styles.submit} id="addAdminBtn">Add</button>
+
+                   </form>
+                 </div> : null
+                }
+            </div>
+
+        </div>
+    );
+}
+
+export default AdminPortal;
