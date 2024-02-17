@@ -1,7 +1,6 @@
 import React from 'react'
 import "../css/aboutUsCard.css"
-import location from "../images/location.png";
-import {button} from "bootstrap"
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from 'react-bootstrap/Button';
 

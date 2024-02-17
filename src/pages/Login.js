@@ -1,10 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
-import { usePromiseTracker } from "react-promise-tracker";
+// import { usePromiseTracker } from "react-promise-tracker";
 import { trackPromise } from "react-promise-tracker";
 
 import { Link } from "react-router-dom";
-import Spinner from "../components/Spinner";
 import styles from "../css/login.module.css";
 import { useNavigate } from "react-router-dom";
 import { authActions } from "../store/index";
@@ -14,7 +13,7 @@ import { showNotification } from "@mantine/notifications";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { promiseInProgress } = usePromiseTracker();
+  // const { promiseInProgress } = usePromiseTracker();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();

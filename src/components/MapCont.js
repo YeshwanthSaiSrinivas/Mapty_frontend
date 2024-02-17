@@ -21,6 +21,7 @@ const MapCont = ({
         // alert("Could not get your location");
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const GetClickedPosition = () => {

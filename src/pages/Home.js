@@ -1,14 +1,14 @@
-import { Container, Carousel } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import TwoCards from "../components/TwoCards";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect, Link } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect } from "react";
+import { Carousel } from "react-bootstrap";
 import Typewriter from "typewriter-effect";
+import TwoCards from "../components/TwoCards";
 import "../css/home.css";
-import sports from "../images/sports.jpg";
 import chess from "../images/chess.jpg";
 import marathon from "../images/marathon.jpg";
+import sports from "../images/sports.jpg";
 
 import FlipCard from "../components/FlipCard";
 import StoryCard from "../components/StoryCard";
