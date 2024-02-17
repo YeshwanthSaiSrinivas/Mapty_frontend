@@ -12,7 +12,7 @@ const Filterevents = ({ filterMarkerHandler, setMapCenterCoords }) => {
     try {
       e.preventDefault();
       const options = {
-        url: `https://mapty-server.onrender.com/api/event/get-event-by-hobby/${hobby}`,
+        url: `http://localhost:3001/api/event/get-event-by-hobby/${hobby}`,
         method: "GET",
         withCredentials: true,
         headers: {

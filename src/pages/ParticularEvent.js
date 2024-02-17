@@ -15,7 +15,7 @@ const ParticularEvent = () => {
     const getEvent = async () => {
       try {
         const options = {
-          url: `https://mapty-server.onrender.com/api/event/one-event/${eventid}`,
+          url: `http://localhost:3001/api/event/one-event/${eventid}`,
           method: "GET",
           withCredentials: true,
           headers: {

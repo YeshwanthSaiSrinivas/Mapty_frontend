@@ -12,7 +12,7 @@ const VerifyEmail = () => {
     try {
       e.preventDefault();
       const options = {
-        url: `https://mapty-server.onrender.com/api/verifyEmail/${token}`,
+        url: `http://localhost:3001/api/verifyEmail/${token}`,
         method: "GET",
         withCredentials: true,
       };

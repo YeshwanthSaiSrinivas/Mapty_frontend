@@ -15,7 +15,7 @@ function AdminPortal() {
   useEffect(() => {
     const getAllUsers = async () => {
       const options = {
-        url: "https://mapty-server.onrender.com/api/user/allUsers",
+        url: "http://localhost:3001/api/user/allUsers",
         method: "GET",
         withCredentials: true,
         headers: {
@@ -45,7 +45,7 @@ function AdminPortal() {
   const deleteEventHandler = async (e) => {
     e.preventDefault();
     const options = {
-      url: `https://mapty-server.onrender.com/api/event/deleteEvent/${deleteEventName}`,
+      url: `http://localhost:3001/api/event/deleteEvent/${deleteEventName}`,
       method: "DELETE",
       withCredentials: true,
       headers: {
@@ -58,7 +58,7 @@ function AdminPortal() {
   const searchUserHandler = async (e) => {
     e.preventDefault();
     const options = {
-      url: `https://mapty-server.onrender.com/api/user/getUser/${searchUserName}`,
+      url: `http://localhost:3001/api/user/getUser/${searchUserName}`,
       method: "GET",
       withCredentials: true,
       headers: {
@@ -71,7 +71,7 @@ function AdminPortal() {
   const deleteUserHandler = async (e) => {
     e.preventDefault();
     const options = {
-      url: `https://mapty-server.onrender.com/api/user/deleteUser/${deleteUserName}`,
+      url: `http://localhost:3001/api/user/deleteUser/${deleteUserName}`,
       method: "DELETE",
       withCredentials: true,
       headers: {
@@ -92,7 +92,7 @@ function AdminPortal() {
   const newAdminHandler = async (e) => {
     e.preventDefault();
     const options = {
-      url: `https://mapty-server.onrender.com/api/user/add-admin/${adminName}`,
+      url: `http://localhost:3001/api/user/add-admin/${adminName}`,
       method: "GET",
       withCredentials: true,
       headers: {

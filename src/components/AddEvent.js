@@ -34,15 +34,15 @@ const AddEvent = ({ lat, lng, show, handleClose, addMarkerHandler }) => {
       form.append("description", description);
       form.append("totalSpot", totalSpot);
       const options = {
-        url: "https://mapty-server.onrender.com/api/event/create-event",
+        url: "http://localhost:3001/api/event/create-event",
         method: "POST",
         data: form,
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       };
-
+console.log("kll")
       const res = await axios(options);
-      console.log(res);
+      console.log(res,"llll");
       if (res.data.status === "success") {
         addMarkerHandler([res.data.data.newEvent]);
         handleClose();
