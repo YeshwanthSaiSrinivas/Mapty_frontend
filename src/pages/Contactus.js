@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../css/Contactus.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { showNotification } from "@mantine/notifications";
-import { AiOutlineExclamationCircle } from "react-icons/ai";
+// import { AiOutlineExclamationCircle } from "react-icons/ai";
 
 function Contactus() {
   const [name, setName] = useState("");

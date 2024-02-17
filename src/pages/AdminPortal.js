@@ -5,7 +5,7 @@ import { showNotification } from "@mantine/notifications";
 
 function AdminPortal() {
   const [condition, setCondition] = useState("1");
-  const [Hobbies, setHobbies] = useState([]);
+  // const [Hobbies, setHobbies] = useState([]);
   const [deleteEventName, setDeleteEventName] = useState("");
   const [deleteUserName, setDeleteUserName] = useState("");
   const [searchUserName, setSearchUserName] = useState("");
@@ -66,6 +66,7 @@ function AdminPortal() {
       },
     };
     const res = await axios(options);
+    console.log(res);
   };
 
   const deleteUserHandler = async (e) => {

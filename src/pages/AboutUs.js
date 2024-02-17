@@ -1,6 +1,5 @@
 import React from "react";
 import TwoCards from "../components/TwoCards";
-import FlipCard from "../components/FlipCard";
 import location from "../images/location.png";
 import paris from "../images/paris.jpg";
 // import aboutus from "../images/aboutus.jpg";

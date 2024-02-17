@@ -36,6 +36,7 @@ const ParticularEvent = () => {
       }
     };
     getEvent();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const joinEventHandler = async (e) => {
