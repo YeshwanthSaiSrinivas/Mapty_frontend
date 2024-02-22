@@ -24,7 +24,7 @@ function OurTeamCard(props) {
             <a
               className="me-2 fa-2xl"
               style={{ color: "black", padding: "10px" }}
-              href="https://www.linkedin.com/in/siddharth25pandey/"
+              href="https://www.linkedin.com/in/yeshwanth-vandrapu-a32174236/"
             >
               <FaLinkedin size="2em"/>
             </a>
@@ -33,7 +33,7 @@ function OurTeamCard(props) {
             <a
               className="me-2"
               style={{ color: "black" }}
-              href="https://github.com/siddharth25pandey"
+              href="https://github.com/YeshwanthSaiSrinivas"
             >
               <FaGithub size="2em"/>
             </a>
