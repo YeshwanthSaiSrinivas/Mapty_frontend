@@ -38,7 +38,7 @@ const Signup = () => {
         }
       }
       const options = {
-        url: "http://localhost:3001/api/user/signup",
+        url: "https://mapty-backend.onrender.com/api/user/signup",
         method: "POST",
         withCredentials: true,
         data: {

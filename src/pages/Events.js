@@ -49,7 +49,7 @@ const Events = () => {
     const getAllEvents = async () => {
       try {
         const options = {
-          url: "http://localhost:3001/api/event/all-events",
+          url: "https://mapty-backend.onrender.com/api/event/all-events",
           method: "GET",
           withCredentials: true,
           headers: {

@@ -70,7 +70,7 @@ function AdminPortal() {
 
     const displayusers = async () => {
         try {
-            const string = "http://localhost:3001/api/user/allUsers";
+            const string = "https://mapty-backend.onrender.com/api/user/allUsers";
             const res = await fetch(string, {
                 headers: {
                     "Content-Type": "application/json",
@@ -123,7 +123,7 @@ function AdminPortal() {
   
     // deleteUser.addEventListener("click", async () => {
     //     const userName = userNameDelete.value;
-    //     const string = `http://localhost:3001/api/user/deleteUser/${userName}`;
+    //     const string = `https://mapty-backend.onrender.com/api/user/deleteUser/${userName}`;
     //     const res = await fetch(string, {
     //         method: "DELETE",
     //     });
@@ -145,7 +145,7 @@ function AdminPortal() {
     //     forms1.style.display = "flex";
     //     const userName = searchuserName.value;
     //     console.log(userName);
-    //     const string = `http://localhost:3001/api/user/getUser/${userName}`;
+    //     const string = `https://mapty-backend.onrender.com/api/user/getUser/${userName}`;
     //     const res = await fetch(string, {
     //         method: "GET",
     //     });
@@ -168,7 +168,7 @@ function AdminPortal() {
 
     // delEventBtn.addEventListener("click", async () => {
     //     const eventName = eventNameDelete.value;
-    //     const string = `http://localhost:3001/api/event/deleteEvent/${eventName}`;
+    //     const string = `https://mapty-backend.onrender.com/api/event/deleteEvent/${eventName}`;
     //     const res = await fetch(string, {
     //         method: "DELETE",
     //     });
@@ -182,7 +182,7 @@ function AdminPortal() {
 
     // addAdminBtn.addEventListener("click", async () => {
     //     const userName = adminName.value;
-    //     const string = `http://localhost:3001/api/user/add-admin/${userName}`;
+    //     const string = `https://mapty-backend.onrender.com/api/user/add-admin/${userName}`;
     //     const res = await fetch(string, {
     //         method: "GET",
     //     });

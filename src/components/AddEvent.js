@@ -34,7 +34,7 @@ const AddEvent = ({ lat, lng, show, handleClose, addMarkerHandler }) => {
       form.append("description", description);
       form.append("totalSpot", totalSpot);
       const options = {
-        url: "http://localhost:3001/api/event/create-event",
+        url: "https://mapty-backend.onrender.com/api/event/create-event",
         method: "POST",
         data: form,
         withCredentials: true,
